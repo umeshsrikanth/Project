@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    include partials/head
+  body
+    include partials/header
+
+    section#home.hero
+      .container
+        h2 Discover the Best Laptops for You
+        p High-performance laptops for work, gaming, and creativity.
+        a.btn(href="#products") Shop Now
+
+    section#features.features
+      .container
+        h2 Why Choose Us?
+        .feature-list
+          .feature-item
+            h3 Powerful Performance
+            p Our laptops are equipped with the latest processors and GPUs for seamless multitasking and gaming.
+          .feature-item
+            h3 Sleek Design
+            p Thin, lightweight, and stylish designs that fit your lifestyle.
+          .feature-item
+            h3 Long Battery Life
+            p Enjoy all-day battery life for work and play.
+
+    section#products.products
+      .container
+        h2 Our Laptops
+        .product-list
+          each product in products
+            .product-item
+              img(src=`/images/${product.image}`, alt=product.name)
+              h3= product.name
+              p= product.description
+              p.price ₹ #{product.price}
+              a.btn(href="#") Buy Now
+
+    section#contact.contact
+      .container
+        h2 Contact Us
+        p Have questions? Reach out to us for more information.
+        form(action="/contact" method="POST")
+          input(type="text" name="name" placeholder="Your Name" required)
+          input(type="email" name="email" placeholder="Your Email" required)
+          textarea(name="message" placeholder="Your Message" required)
+          button(type="submit") Send Message
+
+    include partials/footer
